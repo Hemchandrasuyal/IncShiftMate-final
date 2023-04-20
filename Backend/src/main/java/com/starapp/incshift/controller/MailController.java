@@ -23,7 +23,6 @@ public class MailController {
 		try {
 			
 			SimpleMailMessage message = new SimpleMailMessage();
-			
 			message.setFrom("qt.plus.qt@gmail.com");
 			message.setTo(mailDetailsDTO.getTo());
 			message.setText(mailDetailsDTO.getMessage());

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.starapp.incshift.dto.EmployeeLogin;
 import com.starapp.incshift.entity.Employee;
 import com.starapp.incshift.repository.EmployeeRepository;
+import com.starapp.incshift.services.EmployeeService;
 
 
 
@@ -20,15 +21,14 @@ import com.starapp.incshift.repository.EmployeeRepository;
 public class EmployeeController {
 	
 	@Autowired
-	EmployeeRepository employeeRepository;
+    EmployeeService employeeService;
 
 	//LOGIN 
 	@CrossOrigin("*")	
     @PostMapping("/login")
-    public ResponseEntity<Employee> fetchEmployee(@RequestBody EmployeeLogin employeeLogin){
-		System.out.println(employeeLogin.getEmployeeId());
-		System.out.println(employeeRepository.findByemployeeIdAndPAssword( employeeLogin.getEmployeeId(),employeeLogin.getPassword()));
-return ResponseEntity.ok(employeeRepository.findByemployeeIdAndPAssword( employeeLogin.getEmployeeId(),employeeLogin.getPassword()));
+    public ResponseEntity<Employee> Login(@RequestBody EmployeeLogin employeeLogin){
+		
+return ResponseEntity.ok(employeeService.loginEmployee(employeeLogin.getEmployeeId(),employeeLogin.getPassword()));
     }
 	
 

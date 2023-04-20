@@ -21,13 +21,6 @@ ProjectRepository projectrepository;
 
 //list of project to manager
 @CrossOrigin("*")	
-@GetMapping("/java/showlistofprojettomanager/{managerid}")
-public List<Project> fetchAlltimesheet(@PathVariable("managerid") int managerid){
-	  
-	return projectrepository.findByemployeeId(managerid);
-}
-//Alternate API(Post) 
-@CrossOrigin("*")	
 @PostMapping("/java/Manager/Project")
 public ResponseEntity<List<Project>> fetchAlltimesheetOfManager(@RequestBody EmployeeRequest employeeRequest ){
 	
