@@ -13,17 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.starapp.incshift.dto.EmployeeRequest;
 import com.starapp.incshift.entity.Project;
 import com.starapp.incshift.repository.ProjectRepository;
+import com.starapp.incshift.services.ProjectService;
 
 @RestController
 public class ProjectController {
 @Autowired
-ProjectRepository projectrepository;
+ProjectService projectService;
 
 //list of project to manager
 @CrossOrigin("*")	
 @PostMapping("/java/Manager/Project")
-public ResponseEntity<List<Project>> fetchAlltimesheetOfManager(@RequestBody EmployeeRequest employeeRequest ){
+public ResponseEntity<List<Project>> managerProject(@RequestBody EmployeeRequest employeeRequest ){
 	
-	return ResponseEntity.ok(projectrepository.findByemployeeId(employeeRequest.getEmployeeId()));
+	return ResponseEntity.ok(projectService.showProjectManager(employeeRequest.getEmployeeId()));
 }	
 }
